@@ -1,8 +1,13 @@
 # DevOps Training
 
+Web programming course project for DevOps training. 2022-2023 Fall semester.
+
 ## Question 1
+
 ### 1.1 Create Dockerfile to dockerized a single page application (SPA).
+
 This is our Dockerfile:
+
 ```dockerfile
 FROM node:16-slim
 
@@ -20,32 +25,43 @@ CMD node server.js
 ```
 
 ### 1.2 Create dockerignore file to ignore node_modules folder.
+
 This is our .dockerignore file:
+
 ```
 node_modules
 npm-debug.log
 ```
+
 ### 1.3 Build docker image and run it.
+
 I ran this command to build the image:
+
 ```bash
 docker build -t airways-spa .
 ```
+
 but I got this error:
-```diff
-- ERROR [internal] load metadata for docker.io/library/node:16-slim
-```
+
+<p style="color:red;">ERROR [internal] load metadata for docker.io/library/node:16-slim</p>
+
 I solved this problem by running this command:
+
 ```bash
 rm  ~/.docker/config.json 
 ```
+
 Then everything was fine and I could build the image.
 To see the image, I ran this command:
+
 ```bash
 docker images
 ```
 
 ### 1.4 Create NGINX configuration file to serve the SPA.
+
 This is our nginx.conf file:
+
 ```nginx
 events {
     worker_connections 1024;
@@ -67,11 +83,13 @@ http {
 ```
 
 ### 1.5 Create docker-compose.yml file to run the SPA and NGINX.
-This is our docker-compose.yml file:
-```yaml
-version : "3"
 
-services :
+This is our docker-compose.yml file:
+
+```yaml
+version: "3"
+
+services:
   nginx:
     image: nginx:latest
     container_name: nginx_container
@@ -90,10 +108,13 @@ services :
       dockerfile: ./frontend/Dockerfile
     restart: on-failure
 ```
+
 Now we can see the SPA in the browser by going to this address:
+
 ```bash
 http://localhost:8000
 ```
+
 We use reverse proxy and port forwarding to access the SPA.
 
 ## Question 2
