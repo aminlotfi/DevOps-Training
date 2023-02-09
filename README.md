@@ -110,6 +110,11 @@ services:
       dockerfile: ./frontend/Dockerfile
     restart: on-failure
 ```
+Then I ran this command to run the SPA and NGINX:
+
+```bash
+docker-compose up
+```
 
 Now we can see the SPA in the browser by going to this address:
 
