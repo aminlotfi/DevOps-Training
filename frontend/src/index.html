@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="fa-IR" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="icon" href="static/img/favicon.png">
+    <title>Title</title>
+    <link href="static/css/output.css" rel="stylesheet">
+    <script>
+        if (
+            localStorage.getItem('color-theme') === 'dark' ||
+            (!('color-theme' in localStorage) &&
+                window.matchMedia('(prefers-color-scheme: dark)').matches)
+        ) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    </script>
+</head>
+<body>
+    <div class="w-full">
+        <header>
+            <nav class="bg-[#14151a] w-full p-8">
+                <div class="flex items-center justify-between w-full max-w-[1400px] mx-auto">
+                    <div class="flex items-center justify-start">
+                        <img class="w-[100px] h-[55px]" src="static/img/logo.png" alt="Logo">
+                        <ul class="md:flex items-center justify-start mr-24 text-white hidden">
+                            <li class="ml-48"><a href="/" data-link>خانه</a></li>
+                            <li class="ml-48"><a href="/search-tickets" data-link>لیست بلیط</a></li>
+                            <li class="ml-48"><a href="/buy-ticket" data-link>خرید</a></li>
+                            <li><a href="/panel" data-link>پنل کاربری</a></li>
+                        </ul>
+                    </div>
+                    <div class="flex items-center justify-center">
+                        <button
+                                id="theme-toggle"
+                                type="button"
+                                class="text-gray-500 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-700 focus:outline-none focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 rounded-lg text-sm p-2.5"
+                        >
+                            <svg
+                                    id="theme-toggle-dark-icon"
+                                    class="w-5 h-5 hidden"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                        d="M17.293 13.293A8 8 0 016.707 2.707a8.001 8.001 0 1010.586 10.586z"
+                                ></path>
+                            </svg>
+                            <svg
+                                    id="theme-toggle-light-icon"
+                                    class="w-5 h-5 hidden"
+                                    fill="currentColor"
+                                    viewBox="0 0 20 20"
+                                    xmlns="http://www.w3.org/2000/svg"
+                            >
+                                <path
+                                        d="M10 2a1 1 0 011 1v1a1 1 0 11-2 0V3a1 1 0 011-1zm4 8a4 4 0 11-8 0 4 4 0 018 0zm-.464 4.95l.707.707a1 1 0 001.414-1.414l-.707-.707a1 1 0 00-1.414 1.414zm2.12-10.607a1 1 0 010 1.414l-.706.707a1 1 0 11-1.414-1.414l.707-.707a1 1 0 011.414 0zM17 11a1 1 0 100-2h-1a1 1 0 100 2h1zm-7 4a1 1 0 011 1v1a1 1 0 11-2 0v-1a1 1 0 011-1zM5.05 6.464A1 1 0 106.465 5.05l-.708-.707a1 1 0 00-1.414 1.414l.707.707zm1.414 8.486l-.707.707a1 1 0 01-1.414-1.414l.707-.707a1 1 0 011.414 1.414zM4 11a1 1 0 100-2H3a1 1 0 000 2h1z"
+                                        fill-rule="evenodd"
+                                        clip-rule="evenodd"
+                                ></path>
+                            </svg>
+                        </button>
+                         <a href="/login" data-link class="py-2 px-4 rounded text-white ml-16">ورود</a>
+                        <a href="/signup" data-link class="py-2 px-4 rounded bg-primary-light hover:bg-primary-dark text-black">ثبت‌نام</a>
+                    </div>
+                </div>
+            </nav>
+            <div class="flex justify-center w-full bg-white">
+                <div class="max-w-[1400px] mx-auto w-full">
+                    <img class="w-full h-[150px] md:h-auto" src="static/img/hero.webp" alt="Hero image">
+                </div>
+            </div>
+        </header>
+        <div id="app"></div>
+        <footer class="bg-[#14151a] w-full mt-40 py-32 px-8">
+            <div class="w-full max-w-[1400px] mx-auto text-white">
+                <div class="flex flex-col md:flex-row items-center justify-between bg-[#292c34] p-8 rounded-5">
+                    <div class="text-[14px]">هفت روز هفته، 24 ساعت شبانه روز در کنار شما هستیم</div>
+                    <div class="flex items-center justify-center mt-16 md:mt-0">
+                        <button class="py-2 px-4 border border-white rounded text-white ml-16">تماس با ما</button>
+                        <button class="py-2 px-4 rounded bg-primary-light hover:bg-primary-dark text-black">سوالات متداول</button>
+                    </div>
+                </div>
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-x-72 mt-[92px] w-full">
+                    <div class="flex flex-col items-center justify-center bg-[#292c34] group transition-all duration-300 rounded-10 pb-24">
+                        <div class="w-[120px] h-[120px] rounded-full mt-[-60px] overflow-hidden img-container">
+                            <img width="120" height="130" class="group-hover:scale-105 transition-all duration-700" loading="lazy" src="static/img/members/MohammadAminLotfi.jpg" alt="Mohammad Amin Lotfi">
+                        </div>
+                        <h4 class="text-white group-hover:text-white transition-all duration-300 text-[20px] font-bold mt-8">محمدامین لطفی</h4>
+                        <span class="text-white group-hover:text-white transition-all duration-300 text-[16px] mt-8">شماره دانشجویی: 98171075</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-start bg-[#292c34] group transition-all duration-300 rounded-10 pb-24 w-full mt-80 lg:mt-0">
+                        <div class="w-[120px] h-[120px] rounded-full mt-[-60px] overflow-hidden img-container">
+                            <img width="120" height="130" class="group-hover:scale-105 transition-all duration-700" loading="lazy" src="static/img/members/MehdiAbdi.jpg" alt="Mehdi Abdi">
+                        </div>
+                        <h4 class="text-white group-hover:text-white transition-all duration-300 text-[20px] font-bold mt-8">مهدی عبدی</h4>
+                        <span class="text-white group-hover:text-white transition-all duration-300 text-[16px] mt-8">شماره دانشجویی: 98105892</span>
+                    </div>
+                    <div class="flex flex-col items-center justify-start bg-[#292c34] group transition-all duration-300 rounded-10 pb-24 w-full mt-80 lg:mt-0">
+                        <div class="w-[120px] h-[120px] rounded-full mt-[-60px] overflow-hidden img-container">
+                            <img width="120" height="130" class="group-hover:scale-105 transition-all duration-700" loading="lazy" src="static/img/members/MahdiTeymoori.jpeg" alt="Mahdi Teymoori">
+                        </div>
+                        <h4 class="text-white group-hover:text-white transition-all duration-300 text-[20px] font-bold mt-8">مهدی تیموری‌انار</h4>
+                        <span class="text-white group-hover:text-white transition-all duration-300 text-[16px] mt-8">شماره دانشجویی: 99101354</span>
+                    </div>
+                </div>
+                <div class="text-center text-[12px] mt-32">کلیه حقوق این وب‌سایت محفوظ و متعلق به هواپیمایی شریف است.</div>
+            </div>
+        </footer>
+    </div>
+    <script type="module" src="static/js/index.js"></script>
+</body>
+</html>
