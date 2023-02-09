@@ -43,7 +43,9 @@ docker build -t airways-spa .
 
 but I got this error:
 
-<p style="color:red;">ERROR [internal] load metadata for docker.io/library/node:16-slim</p>
+```diff
+- ERROR [internal] load metadata for docker.io/library/node:16-slim
+```
 
 I solved this problem by running this command:
 
