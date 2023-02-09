@@ -18,3 +18,15 @@ services :
       context: .
       dockerfile: ./frontend/Dockerfile
     restart: on-failure
+
+#  go-auth:
+#    image: airways-auth
+#    build:
+#      context: ./go
+#    restart: on-failure
+#
+#  node-tickets:
+#    image: airways-tickets
+#    build:
+#      context: ./nodejs
+#    restart: on-failure
