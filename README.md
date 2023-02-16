@@ -126,8 +126,49 @@ We use reverse proxy and port forwarding to access the SPA.
 
 ## Question 2
 
-## Question 3
+first we have to pull redis and postgres images with below commands:
 
+```bash
+sudo docker pull redis
+sudo docker pull postgres
+```
+
+then we run the images on some containers with below commands:
+
+```bash
+sudo docker run --name rds -p 9001:6379 -d redis
+sudo docker run --name pg1 -d -p 9002:5432 postgres -v /path/to/csv/files:/csv postgres
+sudo docker run --name pg2 -d -p 9002:5432 postgres -v /path/to/csv/files:/csv postgres
+```
+
+to run these containers, we should use these commands:
+
+```bash
+sudo docker start rds
+sudo docker start pg1
+sudo docker start pg2
+```
+to access bash of a container, following command will help us:
+
+```bash
+sudo docker exec -it container-name bash
+```
+in order to define tables in postgres containers, after running above command and entering pg bash, use these:
+
+```bash
+su postgres
+psql
+```
+and then copy&paste ticket.sql in shell!
+
+as we have map /csv root of container to the path of csv files in our system, we can use below commands to imprt csv files to databases:
+
+```bash
+COPY table-name FROM '/csv/file-name.csv' DELIMITER ',' CSV HEADER;
+```
+db and redis containers are ready now!
+
+## Question 3
 ## Question 4
 
 ## Question 5
