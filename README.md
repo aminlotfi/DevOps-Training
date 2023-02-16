@@ -169,6 +169,48 @@ COPY table-name FROM '/csv/file-name.csv' DELIMITER ',' CSV HEADER;
 db and redis containers are ready now!
 
 ## Question 3
+
+first we create app images with following command:
+
+```bash
+sudo docker build -t image-name -f /path/to/dockerfile /path/to/start
+```
+
+then we run it on a container:
+
+```bash
+sudo docker run --name container-name -d image-name
+```
+
+then we create a network and connect redis, postgres and server containers to that:
+
+```bash
+sudo docker network create --driver bridge network-name
+sudo docker network connect --alias container-tag network-name container-name
+```
+
+to create reverse proxy we sholud create default.conf to redirect requests to where we want:
+
+```bash
+server {
+    listen 80;
+
+    location / {
+        charset utf-8;
+        root /usr/share/nginx/html;
+    }
+
+    location /node/ {
+        add_header Access-Control-Allow-Origin $http_origin;
+        proxy_pass http://nodejs:3000;
+    }
+
+    .
+    .
+    .
+}
+```
+
 ## Question 4
 
 ## Question 5
