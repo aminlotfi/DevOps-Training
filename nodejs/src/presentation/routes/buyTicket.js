@@ -1,7 +1,6 @@
 import axios from "axios";
 import db from "../../database/db.js";
 import APIError from "../../utils/api-error.js";
-import envVars from "../../utils/env.js";
 
 export const buyTicket = {
   endpoint: "ticket",
@@ -115,7 +114,7 @@ const validateTransactionId = async (transaction_id) => {
 
   let result;
   try {
-    result = await axios.get(`${envVars.BANK_URL}/payment/${transaction_id}`);
+    result = await axios.get(`${process.env.BANK_URL}/payment/${transaction_id}`);
   } catch (error) {
     throw new APIError("invalid transaction id", 400);
   }

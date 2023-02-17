@@ -1,5 +1,4 @@
 import axios from "axios";
-import envVars from "../../utils/env.js";
 import APIError from "../../utils/api-error.js";
 
 export const authorizationMiddleware = async (req, res, next) => {
@@ -8,7 +7,7 @@ export const authorizationMiddleware = async (req, res, next) => {
   const token = authorization.replace("Bearer ", "");
   let result;
   try {
-    result = await axios.get(`${envVars.AUTH_URL}/user`, {
+    result = await axios.get(`${process.env.AUTH_URL}/user`, {
       headers: {
         Authorization: token,
       },

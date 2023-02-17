@@ -2,10 +2,9 @@ import pg from "pg";
 import fs from "fs";
 import path from "path";
 import { fileURLToPath } from "url";
-import envVars from "../utils/env.js";
 
 let { Pool } = pg;
-let dbUrl = envVars.DB_URL;
+let dbUrl = `postgresql://${process.env.DB_USER}:${process.env.DB_PASS}@${process.env.DB_HOST}:${process.env.DB_PORT}/${process.env.DB_NAME}`;
 let db = new Pool({
   connectionString: dbUrl,
   ssl: false
